@@ -2,6 +2,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
+from modules2 import *
 
 class Ui_kayitli_kisiler(object):
     def setupUi4(self, kayitli_kisiler):
@@ -19,7 +20,7 @@ class Ui_kayitli_kisiler(object):
         self.gridLayout.addWidget(self.kisi_silme_butonu, 2, 0, 1, 1)
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget.setRowCount(1)
-        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setColumnCount(4)
         self.tableWidget.setObjectName("tableWidget")
         self.gridLayout.addWidget(self.tableWidget, 1, 0, 1, 1)
         self.kisi_sayisi = QtWidgets.QLabel(self.centralwidget)
@@ -36,6 +37,7 @@ class Ui_kayitli_kisiler(object):
         self.retranslateUi(kayitli_kisiler)
         self.kisi_silme_butonu.clicked.connect(self.kisi_sil)
         QtCore.QMetaObject.connectSlotsByName(kayitli_kisiler)
+        self.kisilere_ekle()
 
 
     def kisi_sil(self):
@@ -55,6 +57,8 @@ class Ui_kayitli_kisiler(object):
         query = "SELECT * FROM kayitli_kisiler"
         a = connection.execute ( query )
         self.kisi_sayisi.setText("Toplam Kişi sayısı: "+str(len(a.fetchall())))
+        ornek_sayisi = bilgiler[3]
+        sil(id, ornek_sayisi)
 
 
     def kisilere_ekle(self):
@@ -65,14 +69,14 @@ class Ui_kayitli_kisiler(object):
         query2 = "pragma table_info(kayitli_kisiler)"
         result2 = connection.execute(query2)
         result2_= result2.fetchall()
-        labels = (result2_[0][1], result2_[1][1], result2_[2][1])
+        labels = (result2_[0][1], result2_[1][1], result2_[2][1], result2_[3][1])
         for row_number, row_data in enumerate(result):
             self.tableWidget.insertRow(row_number)
             for column_number, data in enumerate(row_data):
                 self.tableWidget.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
         self.tableWidget.setHorizontalHeaderLabels(labels)
         connection.close()
-        
+
 
     def retranslateUi(self, kayitli_kisiler):
         connection = sqlite3.connect ( "DetectedFaces.db" )
