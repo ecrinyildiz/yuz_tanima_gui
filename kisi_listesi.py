@@ -14,23 +14,17 @@ class Ui_kayitli_kisiler(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-
         self.kisi_silme_butonu = QtWidgets.QPushButton(self.centralwidget)
         self.kisi_silme_butonu.setObjectName("kisi_silme_butonu")
         self.gridLayout.addWidget(self.kisi_silme_butonu, 2, 0, 1, 1)
-
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget.setRowCount(1)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
         self.gridLayout.addWidget(self.tableWidget, 1, 0, 1, 1)
-
         self.kisi_sayisi = QtWidgets.QLabel(self.centralwidget)
         self.kisi_sayisi.setObjectName("kisi_sayisi")
         self.gridLayout.addWidget(self.kisi_sayisi, 3,0,2,2)
-
-
-
         kayitli_kisiler.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(kayitli_kisiler)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 538, 20))
@@ -39,7 +33,6 @@ class Ui_kayitli_kisiler(object):
         self.statusbar = QtWidgets.QStatusBar(kayitli_kisiler)
         self.statusbar.setObjectName("statusbar")
         kayitli_kisiler.setStatusBar(self.statusbar)
-
         self.retranslateUi(kayitli_kisiler)
         self.kisi_silme_butonu.clicked.connect(self.kisi_sil)
         QtCore.QMetaObject.connectSlotsByName(kayitli_kisiler)
@@ -79,9 +72,7 @@ class Ui_kayitli_kisiler(object):
                 self.tableWidget.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
         self.tableWidget.setHorizontalHeaderLabels(labels)
         connection.close()
-
-
-
+        
 
     def retranslateUi(self, kayitli_kisiler):
         connection = sqlite3.connect ( "DetectedFaces.db" )
