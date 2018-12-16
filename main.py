@@ -22,25 +22,23 @@ class Ui_MainWindow(object):
         self.yeni_kayit_butonu.setAutoDefault(False)
         self.yeni_kayit_butonu.setObjectName("yeni_kayit_butonu")
         self.gridLayout.addWidget(self.yeni_kayit_butonu, 0, 0, 1, 1)
-
         self.arduino_baglanti_butonu = QtWidgets.QPushButton(self.centralwidget)
         self.arduino_baglanti_butonu.setEnabled(True)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../icons/arduino.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("icons/arduino.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.arduino_baglanti_butonu.setIcon(icon1)
         self.arduino_baglanti_butonu.setObjectName("arduino_baglanti_butonu")
         self.gridLayout.addWidget(self.arduino_baglanti_butonu, 0, 1, 1, 1)
-
         self.kisileri_gosterme_butonu = QtWidgets.QPushButton(self.centralwidget)
         self.kisileri_gosterme_butonu.setEnabled(True)
         self.kisileri_gosterme_butonu.setObjectName("kisileri_gosterme_butonu")
         self.gridLayout.addWidget(self.kisileri_gosterme_butonu, 1, 1, 1, 1)
 
-
-
         self.veri_setini_egit_butonu = QtWidgets.QPushButton(self.centralwidget)
         self.veri_setini_egit_butonu.setObjectName("veri_setini_egit_butonu")
         self.gridLayout.addWidget(self.veri_setini_egit_butonu, 1, 0, 1, 1)
+
+
         self.yuz_tanima_butonu = QtWidgets.QPushButton(self.centralwidget)
         self.yuz_tanima_butonu.setObjectName("yuz_tanima_butonu")
         self.gridLayout.addWidget(self.yuz_tanima_butonu, 2, 0, 1, 1)
@@ -62,37 +60,39 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.bilgi_menu = QtWidgets.QAction(MainWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../icons/help.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("icons/help.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.bilgi_menu.setIcon(icon2)
         self.bilgi_menu.setObjectName("bilgi_menu")
         self.yeni_kayit_menu = QtWidgets.QAction(MainWindow)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../icons/yeni_dosya.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("icons/yeni_dosya.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.yeni_kayit_menu.setIcon(icon3)
         self.yeni_kayit_menu.setObjectName("yeni_kayit_menu")
         self.veriyi_egit_menu = QtWidgets.QAction(MainWindow)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("../icons/training.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap("icons/training.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.veriyi_egit_menu.setIcon(icon4)
         self.veriyi_egit_menu.setObjectName("veriyi_egit_menu")
         self.cikis_menu = QtWidgets.QAction(MainWindow)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("../icons/exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap("icons/exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.cikis_menu.setIcon(icon5)
         self.cikis_menu.setShortcutContext(QtCore.Qt.WidgetShortcut)
         self.cikis_menu.setObjectName("cikis_menu")
+
         self.arduino_baglantisi = QtWidgets.QAction(MainWindow)
         self.arduino_baglantisi.setIcon(icon1)
         self.arduino_baglantisi.setObjectName("arduino_baglantisi")
+
+
         self.menuDosya.addAction(self.yeni_kayit_menu)
         self.menuDosya.addAction(self.veriyi_egit_menu)
+        self.menuDosya.addAction ( self.arduino_baglantisi )
         self.menuDosya.addSeparator()
         self.menuDosya.addAction(self.cikis_menu)
-        self.menuDosya.addAction(self.arduino_baglantisi)
         self.menu_yardim.addAction(self.bilgi_menu)
         self.menubar.addAction(self.menuDosya.menuAction())
         self.menubar.addAction(self.menu_yardim.menuAction())
-
         self.retranslateUi(MainWindow)
         self.yeni_kayit_butonu.clicked.connect(self.kayit_ekrani_ac)
         self.veri_setini_egit_butonu.clicked.connect(self.veri_setini_egit)
@@ -100,6 +100,8 @@ class Ui_MainWindow(object):
         self.arduino_baglanti_butonu.clicked.connect(self.arduino_baglantisini_baslat)
         self.cikis_butonu.clicked.connect(QtCore.QCoreApplication.instance().quit)
         self.kisileri_gosterme_butonu.clicked.connect(self.kisileri_goster)
+
+
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.yeni_kayit_butonu, self.veri_setini_egit_butonu)
         MainWindow.setTabOrder(self.veri_setini_egit_butonu, self.yuz_tanima_butonu)
@@ -117,16 +119,23 @@ class Ui_MainWindow(object):
         ui2.setupUi2(yeni_kayit_ekrani)
         yeni_kayit_ekrani.show()
         print ( "kayit ekrani acildi" )
+
+
     def veri_setini_egit(self):
         training()
         print("veriler eğitildi.")
+
+
     def yuz_tanimayi_baslat(self):
         detect()
         print("detection started.")
+
+
     def arduino_baglantisini_baslat(self):
         ui3.setupUi3(Arduino1)
         Arduino1.show()
         print("bağlantı başarılı")
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
