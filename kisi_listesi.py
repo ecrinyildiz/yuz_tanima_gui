@@ -2,7 +2,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
-from modules2 import *
+from modules import *
 
 class Ui_kayitli_kisiler(object):
     def setupUi4(self, kayitli_kisiler):
