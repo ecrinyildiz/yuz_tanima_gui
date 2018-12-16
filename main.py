@@ -115,6 +115,8 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.cikis_butonu, self.arduino_baglanti_butonu)
 
 
+
+
     def kisileri_goster(self):
         ui4.setupUi4(kayitli_kisiler)
         ui4.kisilere_ekle()
