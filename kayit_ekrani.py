@@ -1,15 +1,8 @@
 # -*- coding: utf-8 -*-
-
-from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5 import QtWidgets
 from PyQt5 import QtGui, QtCore
-from modules2 import *
-
-
+from modules import *
 
 
 class Kayit_Ekrani(object):
@@ -48,7 +41,6 @@ class Kayit_Ekrani(object):
         self.isim_text = QtWidgets.QLineEdit(self.centralwidget)
         self.isim_text.setObjectName("isim_text")
         self.gridLayout.addWidget(self.isim_text, 2, 1, 1, 1)
-
         self.cikis_butonu = QtWidgets.QPushButton(self.centralwidget)
         self.cikis_butonu.setObjectName("cikis_butonu")
         self.gridLayout.addWidget(self.cikis_butonu, 7, 1, 1, 1)
@@ -56,8 +48,6 @@ class Kayit_Ekrani(object):
         self.statusbar = QtWidgets.QStatusBar(yeni_kayit_ekrani)
         self.statusbar.setObjectName("statusbar")
         yeni_kayit_ekrani.setStatusBar(self.statusbar)
-
-
         self.retranslateUi(yeni_kayit_ekrani)
         self.cikis_butonu.clicked.connect(yeni_kayit_ekrani.close)
         self.kaydet_butonu.clicked.connect(self.kaydet_gonder)
@@ -87,8 +77,6 @@ class Kayit_Ekrani(object):
         msg2.setText ( "Kayıt Başarılı." )
         retval2 = msg2.exec ()
         retval2
-
-
 
 
     def retranslateUi(self, yeni_kayit_ekrani):
