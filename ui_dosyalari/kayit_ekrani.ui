@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>yeni_kayit_ekrani</class>
+ <widget class="QMainWindow" name="yeni_kayit_ekrani">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>509</width>
+    <height>234</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Kayıt Ekranı</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../icons/yeni_dosya.png</normaloff>../icons/yeni_dosya.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="4" column="1">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Kameranın önünde hafifçe kafanızı sağa ve sola doğru çeviriniz</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="kayit_no_label">
+      <property name="text">
+       <string>Kayıt No:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="cinsiyet_label">
+      <property name="text">
+       <string>Cinsiyet:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="isim_label">
+      <property name="text">
+       <string>İsim:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPushButton" name="kaydet_butonu">
+      <property name="text">
+       <string>Kaydet</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="cinsiyet_text"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="isim_text"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="kayit_no_text"/>
+    </item>
+    <item row="7" column="1">
+     <widget class="QPushButton" name="cikis_butonu">
+      <property name="text">
+       <string>Çıkış</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cikis_butonu</sender>
+   <signal>clicked()</signal>
+   <receiver>yeni_kayit_ekrani</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>39</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kaydet_butonu</sender>
+   <signal>clicked()</signal>
+   <receiver>yeni_kayit_ekrani</receiver>
+   <slot>kaydet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>255</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>32</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>kaydet()</slot>
+ </slots>
+</ui>

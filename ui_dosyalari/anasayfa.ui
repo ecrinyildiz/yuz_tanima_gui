@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Ecrin Yıldız</author>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>568</width>
+    <height>316</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Yüz Tanıma Sistemi</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icons/icon.png</normaloff>icons/icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="yeni_kayit_butonu">
+      <property name="text">
+       <string>Yeni Kayıt</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="arduino_baglanti_butonu">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Arduino Bağlantısı</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../icons/arduino.png</normaloff>../icons/arduino.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="veri_setini_egit_butonu">
+      <property name="text">
+       <string>Veri Setini Eğit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="yuz_tanima_butonu">
+      <property name="text">
+       <string>Yüz Tanımayı Başlat</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="cikis_butonu">
+      <property name="text">
+       <string>Çıkış</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>568</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDosya">
+    <property name="title">
+     <string>Dosya</string>
+    </property>
+    <addaction name="yeni_kayit_menu"/>
+    <addaction name="veriyi_egit_menu"/>
+    <addaction name="separator"/>
+    <addaction name="cikis_menu"/>
+    <addaction name="arduino_baglantisi"/>
+   </widget>
+   <widget class="QMenu" name="menu_yardim">
+    <property name="title">
+     <string>Yardım</string>
+    </property>
+    <addaction name="bilgi_menu"/>
+   </widget>
+   <addaction name="menuDosya"/>
+   <addaction name="menu_yardim"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <action name="bilgi_menu">
+   <property name="icon">
+    <iconset>
+     <normaloff>../icons/help.png</normaloff>../icons/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bilgi</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="yeni_kayit_menu">
+   <property name="icon">
+    <iconset>
+     <normaloff>../icons/yeni_dosya.png</normaloff>../icons/yeni_dosya.png</iconset>
+   </property>
+   <property name="text">
+    <string>Yeni Kayıt</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="veriyi_egit_menu">
+   <property name="icon">
+    <iconset>
+     <normaloff>../icons/training.png</normaloff>../icons/training.png</iconset>
+   </property>
+   <property name="text">
+    <string>Veriyi Eğit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="cikis_menu">
+   <property name="icon">
+    <iconset>
+     <normaloff>../icons/exit.png</normaloff>../icons/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Çıkış</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WidgetShortcut</enum>
+   </property>
+  </action>
+  <action name="arduino_baglantisi">
+   <property name="icon">
+    <iconset>
+     <normaloff>../icons/arduino.png</normaloff>../icons/arduino.png</iconset>
+   </property>
+   <property name="text">
+    <string>Arduino Bağlantısı</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>yeni_kayit_butonu</tabstop>
+  <tabstop>veri_setini_egit_butonu</tabstop>
+  <tabstop>yuz_tanima_butonu</tabstop>
+  <tabstop>cikis_butonu</tabstop>
+  <tabstop>arduino_baglanti_butonu</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>yeni_kayit_butonu</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>kayit_ekrani_ac()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>118</x>
+     <y>35</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>veri_setini_egit_butonu</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>veri_setini_egit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>132</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>yuz_tanima_butonu</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>yuz_tanimayi_baslat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>arduino_baglanti_butonu</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>arduino_baglantisini_baslat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>323</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>31</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cikis_butonu</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>kayit_ekrani_ac()</slot>
+  <slot>veri_setini_egit()</slot>
+  <slot>yuz_tanimayi_baslat()</slot>
+  <slot>arduino_baglantisini_baslat()</slot>
+ </slots>
+</ui>
