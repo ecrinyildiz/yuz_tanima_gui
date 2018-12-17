@@ -11,7 +11,7 @@ ser = serial.Serial()
 ports = list(serial.tools.list_ports.comports())
 conn = sqlite3.connect("DetectedFaces.db")
 c = conn.cursor()
-c.execute ( "CREATE TABLE IF NOT EXISTS kayitli_kisiler(id int, isim text, soyad text)" )
+c.execute ( "CREATE TABLE IF NOT EXISTS kayitli_kisiler(id int, isim text, soyad text, ornek_sayisi int)" )
 
 def arduinoyu_bagla(secim):
     if secim == "1":
@@ -28,7 +28,7 @@ def arduinoyu_bagla(secim):
     return secim
 
 
-def kaydet(isim, soyad):
+def kaydet(isim, soyad, ornek_sayisi):
     faceDetect = cv2.CascadeClassifier ( 'haarcascade_frontalface_default.xml' )
     cam = cv2.VideoCapture ( 0 )
 
@@ -39,7 +39,7 @@ def kaydet(isim, soyad):
     cmd = "SELECT * FROM kayitli_kisiler WHERE id=" + str ( id_ )
     cursor = c.execute ( cmd )
 
-    c.execute ( 'insert into kayitli_kisiler values(?,?,?)', (id_, isim, soyad) )
+    c.execute ( 'insert into kayitli_kisiler values(?,?,?,?)', (id_, isim, soyad, ornek_sayisi) )
     conn.commit ()
 
     if len ( c.execute ( "select id from kayitli_kisiler where id={}".format ( int ( id_ ) ) ).fetchall () ) > 1:
@@ -61,7 +61,7 @@ def kaydet(isim, soyad):
                 cv2.waitKey ( 100 )
             cv2.imshow ( 'Yuz', img )
             cv2.waitKey ( 1 )
-            if (sampleNum > 5):
+            if (sampleNum >= ornek_sayisi):
                 break
         cam.release ()
         cv2.destroyAllWindows ()
@@ -151,3 +151,11 @@ def detect():
             break
     cam.release ()
     cv2.destroyAllWindows ()
+
+
+def sil(id, ornek_sayisi):
+    sayi = 1
+    while sayi < ornek_sayisi+1:
+        os.remove("/home/ecr/Desktop/ilk_programim/dataSet/Kullanici."+ str(id)+"."+str(sayi)+".jpg")
+
+        sayi += 1
