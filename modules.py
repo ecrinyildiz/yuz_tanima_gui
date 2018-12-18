@@ -14,17 +14,10 @@ c = conn.cursor()
 c.execute ( "CREATE TABLE IF NOT EXISTS kayitli_kisiler(id int, isim text, soyad text, ornek_sayisi int)" )
 
 def arduinoyu_bagla(secim):
-    if secim == "1":
-        ser.port =  '/dev/ttyUSB0'   # open serial port
-        ser.open()
-        print("'ttyUSB0' portundan bağlantı sağlandı.")
+    ser.port =  str(secim)   # open serial port
+    ser.open()
+    print("'{}' portundan bağlantı sağlandı.".format(secim))
 
-    elif secim == "2":
-        ser.port = "com1"
-        ser.open()
-        print("'com1' portundan bağlantı sağlandı.")
-    else:
-        print(secim)
     return secim
 
 
@@ -112,6 +105,8 @@ def getprofile(id_):
     profile1 = None
     for row in cursor:
         profile1 = row
+
+
     return profile, profile1
 
 
@@ -130,18 +125,21 @@ def detect():
             id_, conf = rec.predict(gray [y:y + h, x:x + w])
             profile = getprofile(id_)[0]
             profile1 = getprofile ( id_ ) [1]
-            print(conf)
+
+            # print(conf)
             if conf < 50:
                 if profile is not None:
                     if ser.isOpen () == True:
                         ser.write ( b'1' )  # write a string
                     cv2.rectangle ( img, (x, y), (x + w, y + h), (0, 255, 0), 2 )
-                    print ( profile )
+                    # print ( profile )
+                    cv2.putText ( img, ("Id: " + str(id_)), (x, y + h+90 ), font, 0.8, (0, 255, 0), 2 )
                     cv2.putText ( img, ("Isim: " + profile [0]), (x, y + h + 30), font, 0.8, (0, 255, 0), 2 )
                     cv2.putText ( img, ("Soyisim: " + profile1 [0]), (x, y + h + 60), font, 0.8, (0, 255, 0), 2 )
+
             elif conf > 50:
                 cv2.rectangle ( img, (x, y), (x + w, y + h), (0, 0, 225), 2 )
-                print("Sisteme Kayıtlı değil!")
+                # print("Sisteme Kayıtlı değil!")
                 cv2.putText ( img, "Sisteme Kayitli Degil!", (x, y + h + 30), font, 0.6, (255, 122, 122), 2 )
                 if ser.isOpen () == True:
                     ser.write ( b'2' )  # write a string
