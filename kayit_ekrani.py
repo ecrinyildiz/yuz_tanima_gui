@@ -94,13 +94,12 @@ class Kayit_Ekrani(object):
 
 
     def retranslateUi(self, yeni_kayit_ekrani):
-        a = c.execute("select * from kayitli_kisiler")
-        b = str(len(a.fetchall())+1)
+        b = id_no_bul()
         _translate = QtCore.QCoreApplication.translate
         yeni_kayit_ekrani.setWindowTitle(_translate("yeni_kayit_ekrani", "Kayıt Ekranı"))
         self.label.setText(_translate("yeni_kayit_ekrani", "Kameranın önünde hafifçe kafanızı sağa ve sola doğru çeviriniz"))
         self.kayit_no_label.setText(_translate("yeni_kayit_ekrani", "Kayıt No:"))
-        self.kayit_no_label2.setText ( _translate ( "yeni_kayit_ekrani",b ) )
+        self.kayit_no_label2.setText ( _translate ( "yeni_kayit_ekrani", str(b) ) )
         self.soyad_label.setText(_translate("yeni_kayit_ekrani", "Soyisim:"))
         self.isim_label.setText(_translate("yeni_kayit_ekrani", "İsim:"))
         self.kaydet_butonu.setText(_translate("yeni_kayit_ekrani", "Kaydet"))

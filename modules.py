@@ -20,15 +20,34 @@ def arduinoyu_bagla(secim):
 
     return secim
 
+def id_no_bul():
+    a = c.execute("select id from kayitli_kisiler")
+    a = a.fetchall()
+    id_no_listesi = []
+    for i in a:
+        id_no_listesi.append(i[0])
+
+    sirali_id_no_listesi = sorted(id_no_listesi)
+    n = 0
+    while n < len(sirali_id_no_listesi)-1:
+        if sirali_id_no_listesi[n+1] - sirali_id_no_listesi[n] != 1:
+            # print("sıra bozulmuş")
+            # print(sirali[n+1] - sirali[0])
+            id_ = sirali_id_no_listesi[n]+1
+            # print(id_)
+        else:
+            sayi = len(sirali_id_no_listesi)
+            id_ = len(sirali_id_no_listesi)+1
+        n += 1
+        return id_
 
 def kaydet(isim, soyad, ornek_sayisi):
     faceDetect = cv2.CascadeClassifier ( 'haarcascade_frontalface_default.xml' )
     cam = cv2.VideoCapture ( 0 )
 
-    c.execute ( 'select id from kayitli_kisiler' )
-    kayitli_kisi_sayisi = len ( c.fetchall () )
+    id_ = id_no_bul()
 
-    id_ = kayitli_kisi_sayisi + 1
+
     cmd = "SELECT * FROM kayitli_kisiler WHERE id=" + str ( id_ )
     cursor = c.execute ( cmd )
 
