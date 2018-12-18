@@ -4,9 +4,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from kayit_ekrani import *
 from modules import *
-from arduino_baglanti import *
 from kisi_listesi import *
 from bilgi_ekrani import *
+from arduino_baglanti import *
 
 class Ui_MainWindow(object):
     def setupUi1(self, MainWindow):
@@ -116,7 +116,6 @@ class Ui_MainWindow(object):
 
 
 
-
     def kisileri_goster(self):
         ui4.setupUi4(kayitli_kisiler)
         ui4.kisilere_ekle()
@@ -196,3 +195,4 @@ if __name__ == "__main__":
     MainWindow.show()
     sys.exit(app.exec_())
     
+
