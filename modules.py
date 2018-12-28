@@ -139,6 +139,7 @@ def detect():
         ret, img = cam.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = faceDetect.detectMultiScale(gray, 1.3, 5)
+        cv2.putText ( img, "Kisi sayisi: " + str ( len ( faces )  ), (450, 50), font, 0.8, (255, 255, 255), 2 )
         for (x, y, w, h) in faces:
 
             id_, conf = rec.predict(gray [y:y + h, x:x + w])
